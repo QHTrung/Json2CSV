@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: scroll-y;
+  background-color: rgb(29, 25, 25);
+}
+.heading {
+  margin: 20px 0;
+  color: white;
+  text-align: center;
+}
+button {
+  padding: 10px;
+  border-radius: 10px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: chocolate;
+  color: white;
+}
+.w-100 {
+  width: 100%;
+}
+textarea {
+  padding: 5px 0 0 5px;
+  font-size: 20px;
+}
+.container {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'json features csv';
+}
+.json-wrapper {
+  grid-area: json;
+}
+.feature-wraper {
+  grid-area: features;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+.feature-wraper > button {
+  width: 60%;
+}
+.csv-wraper {
+  grid-area: csv;
+}

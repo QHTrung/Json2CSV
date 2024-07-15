@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "fullname": "Nguyen Van A",
+    "age": 30
+  },
+  {
+    "id": 2,
+    "fullname": "Tran Thi B",
+    "age": 25
+  },
+  {
+    "id": 3,
+    "fullname": "Le Van C",
+    "age": 28
+  }
+]
