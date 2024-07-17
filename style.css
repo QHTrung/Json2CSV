@@ -5,7 +5,7 @@
 }
 body {
   overflow: scroll-y;
-  background-color: rgb(29, 25, 25);
+  background-color: #0f172a;
 }
 .heading {
   margin: 20px 0;
@@ -13,7 +13,7 @@ body {
   text-align: center;
 }
 button {
-  background-color: #4a45ea;
+  background-color: rgb(30, 41, 59);
   padding: 10px;
   border-radius: 10px;
   color: white;
@@ -21,7 +21,7 @@ button {
 }
 button:hover {
   cursor: pointer;
-  opacity: 0.8;
+  background-color: rgb(42, 55, 76);
 }
 .w-100 {
   width: 100%;
@@ -31,6 +31,24 @@ textarea {
   font-size: 20px;
   border-radius: 10px;
 }
+.table-wrapper {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td,
+th {
+  color: white;
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
 .container {
   padding: 20px;
   height: 100%;
