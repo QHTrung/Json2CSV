@@ -1,6 +1,8 @@
 const formatBtn = document.querySelector('.format-btn');
 const clearBtn = document.querySelector('.clear-btn');
-const convertBtn = document.querySelector('.convert-btn');
+const convertJsonBtn = document.querySelector('.convertjson-btn');
+const convertCsvBtn = document.querySelector('.convertcsv-btn');
+const downloadCsvBtn = document.querySelector('.download-btn');
 const jsonFrame = document.getElementById('jsonFr');
 const csvFrame = document.getElementById('csvFr');
 const csvTable = document.getElementById('csv-table');
@@ -13,11 +15,28 @@ clearBtn.addEventListener('click', () => {
   jsonFrame.value = '';
   csvFrame.value = '';
 });
-convertBtn.addEventListener('click', () => {
+convertJsonBtn.addEventListener('click', () => {
   csvFrame.value = convertJson2Csv(jsonFrame.value);
-  console.log(getHeader_Value_CSV(csvFrame.value));
+  getHeader_Value_CSV(csvFrame.value);
 });
-
+downloadCsvBtn.addEventListener('click', (e) => {
+  const csvData = csvFrame.value;
+  if (csvData === '') {
+    alert('CSV is empty!');
+  } else {
+    const element = document.createElement('a');
+    element.setAttribute('href', `data:text/csv;charser=utf-8,${csvData}`);
+    element.setAttribute('download', 'data.csv');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+});
+convertCsvBtn.addEventListener('click', () => {
+  const jsonObj = convertCsv2Json(csvFrame.value);
+  jsonFrame.value = JSON.stringify(jsonObj);
+});
 const convertJson2Csv = (data) => {
   const jsonData = JSON.parse(data);
   let result = '';
