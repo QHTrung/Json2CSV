@@ -6,6 +6,7 @@ const downloadCsvBtn = document.querySelector('.download-btn');
 const jsonFrame = document.getElementById('jsonFr');
 const csvFrame = document.getElementById('csvFr');
 const csvTable = document.getElementById('csv-table');
+const fileEl = document.getElementById('file');
 
 formatBtn.addEventListener('click', () => {
   const obj = JSON.parse(jsonFrame.value);
@@ -27,15 +28,33 @@ downloadCsvBtn.addEventListener('click', (e) => {
     const element = document.createElement('a');
     element.setAttribute('href', `data:text/csv;charser=utf-8,${csvData}`);
     element.setAttribute('download', 'data.csv');
-    element.style.display = 'none';
-    document.body.appendChild(element);
     element.click();
-    document.body.removeChild(element);
   }
 });
 convertCsvBtn.addEventListener('click', () => {
   const jsonObj = convertCsv2Json(csvFrame.value);
   jsonFrame.value = JSON.stringify(jsonObj);
+});
+fileEl.addEventListener('click', (e) => {
+  e.target.value = '';
+});
+fileEl.addEventListener('change', (event) => {
+  event.preventDefault();
+  const file = event.target.files[0];
+  if (file && file.type === 'application/json') {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        jsonFrame.value = JSON.stringify(data, null, 2);
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+    reader.readAsText(file);
+  } else {
+    alert('Please choose json file!');
+  }
 });
 const convertJson2Csv = (data) => {
   const jsonData = JSON.parse(data);
